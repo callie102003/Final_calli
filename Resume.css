@@ -1,0 +1,193 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+background-color: #081b29;
+color: #ededed;
+
+}
+
+.header{
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+padding: 30px 10%;
+background: transparent;
+display: flex;
+justify-content: space-between;
+align-items: center;
+z-index: 100;
+}
+
+.logo{
+position: relative;
+font-size: 25px;
+color: #ededed;
+text-decoration: none;
+font-weight: 600;
+}
+
+.logo::before{
+content: '';
+position: absolute;
+top: 0;
+right: 0;
+width: 100%;
+height: 100%;
+background: #081b29;
+animation: showRight 1s ease forwards;
+animation-delay: .4s;
+}
+
+.navigation a{
+font-size: 20px;
+color: #ededed;
+text-decoration: none;
+font-weight: 500;
+margin-left: 20px;
+transition: .3s;
+}
+
+.navigation a:hover,
+.navigation a.active {
+color: #009abf;
+}
+
+.home{
+height: 98vh;
+background: url();
+background-size: cover;
+background-position: center;
+display: flex;
+align-items: center;
+padding: 0 10%;
+}
+
+.home::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: #081b29;
+    animation: showRight 1s ease forwards;
+    animation-delay: 1.3s;
+    z-index: 2;
+}
+
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    max-height: 600px;
+    margin: auto;
+    border: #3E3232 solid;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    font-family: arial;
+    
+  }
+
+.home-sci{
+position: absolute;
+bottom: 40px;
+width: 170px;
+display: flex;
+justify-content: space-between;
+}
+
+.home-sci::before{
+content: '';
+position: absolute;
+top: 0;
+right: 0;
+width: 100%;
+height: 100%;
+background: #081b29;
+animation: showRight 1s ease forwards;
+animation-delay: 2.0s;
+z-index: 2;
+}
+
+.home-sci a{
+position: relative;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+width: 40px;
+height: 40px;
+background: transparent;
+border: 2px solid #009abf;
+border-radius: 50%;
+font-size: 20px;
+color: #009abf;
+text-decoration: none;
+z-index: 1;
+overflow: hidden;
+transition: .5s;
+}
+
+.home-sci a:hover{
+color: #081b29;
+}
+
+.home-sci a::before{
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 0;
+height: 100%;
+background: #009abf;
+z-index: -1;
+transition: .5s;
+}
+.home-sci a:hover::before{
+width: 100%;
+
+}
+
+@keyframes showRight{
+100%{
+    width: 0;
+}
+}
+
+@media only screen and (max-width: 1024px) {
+    .header {
+        padding: 20px 5%;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .header {
+        padding: 15px 5%;
+    }
+    .logo {
+        font-size: 20px;
+    }
+    .navigation a {
+        font-size: 16px;
+        margin-left: 10px;
+    }
+    .home {
+        padding: 0 5%;
+    }
+    .card {
+        max-width: 90%;
+    }
+    .home-sci {
+        bottom: 20px;
+        width: 130px;
+    }
+    .home-sci a {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>My Portfolio</title>
+</head>
+<body>
+    <header class="header">
+        <h2 class="logo">CALIXMXX</h2>
+        <nav class="navigation">
+            <a href="index.html">Home</a>
+            <a href="AboutMe.html">About Me</a>
+            <a href="Projects.html">Projects</a>
+            <a href="Hobbies.html">Hobbies</a>
+            <a href="Resume.html">Resume</a>
+            <a href="#" class="active">Login</a>
+        </nav>
+    </header>
+    <section class="home">
+        <div class="login-form">
+            <br>
+            <h1>To Avail my service, Login here!</h1>
+            <br>
+            <br>
+            <input type="email" id="email" placeholder="Email">
+            <br>
+            <br>
+            <br>
+            <input type="password" id="password" placeholder="Password">
+            <br>
+            <br>
+            <br>
+            
+            <button onclick="login()">Login</button>
+        </div>
+        <div class="home-sci">
+            <a href="https://www.facebook.com/kevin.guerrero.94009/"><i class='bx bxl-facebook' ></i></a>
+            <a href="https://www.instagram.com/dr_callieee/"><i class='bx bxl-instagram' ></i></a>
+            <a href="#"><i class='bx bxl-twitter' ></i></a>
+        </div>
+    </section>
+
+    <script>
+        function login() {
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            
+            // Input validation
+            if (email.trim() === '') {
+                alert('Please enter your email.');
+                return;
+            }
+            if (password.trim() === '') {
+                alert('Please enter your password.');
+                return;
+            }
+    
+            // Here you can add your login logic
+            console.log("Email: " + email + ", Password: " + password);
+    
+            // Optionally, you can reset the form after successful login
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+        }
+    </script>
+    
+</body>
+</html>

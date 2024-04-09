@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Calculator</title>
+</head>
+<style>
+    body {
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    #container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label, input, button {
+        display: block;
+        margin: 10px 0;
+    }
+
+    button {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    #output {
+        margin-top: 20px;
+    }
+
+    .error {
+        color: red;
+    }
+</style>
+<body>
+    <div id="container">
+        <h1>Grade Calculator</h1>
+        <label for="grade1">Input Grade 1:</label>
+        <input type="number" id="grade1">
+        <span id="grade1Error" class="error"></span>
+
+        <label for="grade2">Input Grade 2:</label>
+        <input type="number" id="grade2">
+        <span id="grade2Error" class="error"></span>
+
+        <label for="grade3">Input Grade 3:</label>
+        <input type="number" id="grade3">
+        <span id="grade3Error" class="error"></span>
+
+        <label for="grade4">Input Grade 4:</label>
+        <input type="number" id="grade4">
+        <span id="grade4Error" class="error"></span>
+
+        <label for="grade5">Input Grade 5:</label>
+        <input type="number" id="grade5">
+        <span id="grade5Error" class="error"></span>
+
+        <br>
+        <label for="studentName">Student Name:</label>
+        <input type="text" id="studentName">
+        <span id="studentNameError" class="error"></span>
+
+        <label for="section">Section:</label>
+        <input type="text" id = "section">
+        <span id="sectionError" class="error"></span>
+
+        <label for="yearLevel">Year Level:</label>
+        <input type="number" id="yearLevel">
+        <span id="yearLevelError" class="error"></span>
+
+        <button id="calculateButton">Calculate Grade</button>
+        <br>
+        <div id="output"></div>
+    </div>
+</body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const calculateButton = document.getElementById("calculateButton");
+        const outputDiv = document.getElementById("output");
+
+        calculateButton.addEventListener("click", function () {
+            const grade1 = parseFloat(document.getElementById("grade1").value);
+            const grade2 = parseFloat(document.getElementById("grade2").value);
+            const grade3 = parseFloat(document.getElementById("grade3").value);
+            const grade4 = parseFloat(document.getElementById("grade4").value);
+            const grade5 = parseFloat(document.getElementById("grade5").value);
+
+            const studentName = document.getElementById("studentName").value;
+            const section = document.getElementById("section").value;
+            const yearLevel = parseInt(document.getElementById("yearLevel").value);
+
+            const grade1Error = document.getElementById("grade1Error");
+            const grade2Error = document.getElementById("grade2Error");
+            const grade3Error = document.getElementById("grade3Error");
+            const grade4Error = document.getElementById("grade4Error");
+            const grade5Error = document.getElementById("grade5Error");
+            const studentNameError = document.getElementById("studentNameError");
+            const sectionError = document.getElementById("sectionError");
+            const yearLevelError = document.getElementById("yearLevelError");
+
+            grade1Error.textContent = "";
+            grade2Error.textContent = "";
+            grade3Error.textContent = "";
+            grade4Error.textContent = "";
+            grade5Error.textContent = "";
+            studentNameError.textContent = "";
+            sectionError.textContent = "";
+            yearLevelError.textContent = "";
+
+            let isValid = true;
+
+            if (isNaN(grade1)) {
+                grade1Error.textContent = "Input is required";
+                isValid = false;
+            }
+
+            if (isNaN(grade2)) {
+                grade2Error.textContent = "Input is required";
+                isValid = false;
+            }
+
+            if (isNaN(grade3)) {
+                grade3Error.textContent = "Input is required";
+                isValid = false;
+            }
+
+            if (isNaN(grade4)) {
+                grade4Error.textContent = "Input is required";
+                isValid = false;
+            }
+
+            if (isNaN(grade5)) {
+                grade5Error.textContent = "Input is required";
+                isValid = false;
+            }
+
+            if (!studentName.trim()) {
+                studentNameError.textContent = "Input is required";
+                isValid = false;
+            }
+
+            if (!section.trim()) {
+                sectionError.textContent = "Input is required";
+                isValid = false;
+            }
+
+            if (isNaN(yearLevel)) {
+                yearLevelError.textContent = "Input is required";
+                isValid = false;
+            }
+
+            if (!isValid) {
+                return;
+            }
+
+            const average = calculateAverage(grade1, grade2, grade3, grade4, grade5);
+
+            let resultText = `Student: ${studentName}<br>`;
+            resultText += `Section: ${section}<br>`;
+            resultText += `Year Level: ${yearLevel}<br>`;
+            resultText += `Average Grade: ${average.toFixed(2)}<br>`;
+
+            if (average > 90) {
+                resultText += "Result: With honors";
+            } else if (average >= 75) {
+                resultText += "Result: Passed";
+            } else {
+                resultText += "Result: Failed";
+            }
+
+            outputDiv.innerHTML = resultText;
+        });
+
+        function calculateAverage(grade1, grade2, grade3, grade4, grade5) {
+            return (grade1 + grade2 + grade3 + grade4 + grade5) / 5;
+        }
+    });
+</script>
+</html>
